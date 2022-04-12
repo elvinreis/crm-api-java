@@ -1,9 +1,20 @@
 package com.elvin.crmapi.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.List;
 
+import com.elvin.crmapi.model.Customer;
+import com.elvin.crmapi.respository.CustomerRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
 public class CustomerService {
 
     @Autowired
-    private CustomerRepository CustomerRepository;
+    private CustomerRepository customerRepository;
+
+    public List<Customer> getAll() {
+        return customerRepository.findAll();
+    }
 }
