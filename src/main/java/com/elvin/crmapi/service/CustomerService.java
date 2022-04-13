@@ -15,6 +15,13 @@ public class CustomerService {
     private CustomerRepository customerRepository;
 
     public List<Customer> getAll() {
+      
         return customerRepository.findAll();
+    }
+
+    public Customer getById(int id) {
+       
+        return customerRepository.findById(id).orElse(new Customer());
+        
     }
 }
