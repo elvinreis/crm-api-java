@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
@@ -38,6 +39,20 @@ public class CustomerController {
 
         
         return customerService.save(customer);
+    }
+
+    @PutMapping("/{id}")
+    public Customer save(@RequestBody Customer newCustomerData, @PathVariable("id")int id){
+
+        Customer storedCustomerData = customerService.getById(id);
+
+        storedCustomerData.setName(newCustomerData.getName());
+        storedCustomerData.setSurname(newCustomerData.getSurname());
+        storedCustomerData.setEmail(newCustomerData.getEmail());
+        storedCustomerData.setBirthdate(newCustomerData.getBirthdate());
+
+
+        return customerService.save(storedCustomerData);
     }
 
     
