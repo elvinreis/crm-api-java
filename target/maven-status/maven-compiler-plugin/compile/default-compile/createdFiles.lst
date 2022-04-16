@@ -1,0 +1,5 @@
+com\elvin\crmapi\controller\CustomerController.class
+com\elvin\crmapi\respository\CustomerRepository.class
+com\elvin\crmapi\service\CustomerService.class
+com\elvin\crmapi\model\Customer.class
+com\elvin\crmapi\CrmapiApplication.class
