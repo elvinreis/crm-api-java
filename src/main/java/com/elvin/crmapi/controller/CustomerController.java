@@ -36,7 +36,7 @@ public class CustomerController {
 
         Customer customer = customerService.getById(id);
 
-        if(customer == null) {
+        if(customer.getId() <= 0) {
 
             return ResponseEntity.notFound().build();
         }
@@ -47,11 +47,6 @@ public class CustomerController {
     @PostMapping
     public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
 
-        if(customer == null) {
-
-            return ResponseEntity.badRequest().build();
-        }
-
         customerService.save(customer);
         
         return new ResponseEntity<>(customer, HttpStatus.CREATED);
@@ -61,11 +56,6 @@ public class CustomerController {
     public ResponseEntity<Customer> editCustomer(@RequestBody Customer newCustomerData, @PathVariable("id")int id){
 
         Customer storedCustomerData = customerService.getById(id);
-
-        if(storedCustomerData != null){
-
-            return ResponseEntity.badRequest().build();
-        }
 
         storedCustomerData.setName(newCustomerData.getName());
         storedCustomerData.setSurname(newCustomerData.getSurname());
